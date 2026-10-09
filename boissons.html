@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Rayon boissons — eaux, jus, sodas, thés et cafés au Fruit et Légumes de Montsouris, Paris 14ème."/>
+  <title>Boissons — Fruit et Légumes de Montsouris</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/main.css"/>
+</head>
+<body>
+<nav id="navbar" class="solid" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Accueil"><div class="nav-logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" d="M12 3C8 3 4 6.5 4 11c0 3 1.5 5.5 4 7.5"/><path stroke-linecap="round" d="M12 3c4 0 8 3.5 8 8 0 3-1.5 5.5-4 7.5"/></svg></div><div><span class="nav-logo-text-top">Fruit &amp; Légumes</span><span class="nav-logo-text-bot">de Montsouris</span></div></a>
+    <ul class="nav-links" role="list"><li><a href="index.html" class="nav-link">Accueil</a></li><li><a href="qui-sommes-nous.html" class="nav-link">Notre magasin</a></li><li><a href="nos-rayons.html" class="nav-link active">Nos rayons</a></li><li><a href="galerie.html"              class="nav-link">Galerie</a></li><li><a href="contact.html" class="nav-link">Contact</a></li></ul>
+    <a href="contact.html" class="nav-cta"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Nous trouver</a>
+    <button class="burger-btn" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"><span class="burger-bar"></span><span class="burger-bar"></span><span class="burger-bar"></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" role="navigation"><div class="mobile-menu-inner"><a href="index.html" class="mobile-menu-link">Accueil</a><a href="qui-sommes-nous.html" class="mobile-menu-link">Notre magasin</a><a href="nos-rayons.html" class="mobile-menu-link active">Nos rayons</a><a href="galerie.html"         class="mobile-menu-link">Galerie</a><a href="contact.html" class="mobile-menu-link">Contact</a><a href="contact.html" class="mobile-menu-cta">Nous trouver</a></div></div>
+</nav>
+
+<header class="page-hero" style="min-height:420px">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=1920&q=85')"></div>
+  <div class="page-hero-content">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span class="breadcrumb-sep">›</span><a href="nos-rayons.html">Nos rayons</a><span class="breadcrumb-sep">›</span><span aria-current="page">Boissons</span></nav>
+    <div class="page-hero-badge">Jus · Eaux · Thés · Cafés</div>
+    <h1 class="page-hero-title">Boissons</h1>
+    <p class="page-hero-sub">Un rayon boissons complet — des jus frais aux thés du monde, en passant par sodas et eaux pétillantes.</p>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section class="section" style="background:var(--mint)">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr;gap:3rem;align-items:center" class="md-grid-2">
+      <div class="reveal">
+        <span class="section-label">Notre rayon boissons</span>
+        <h2 class="section-title">De quoi étancher<br>toutes les soifs !</h2>
+        <p style="color:rgba(15,23,42,.65);line-height:1.8;margin-bottom:1rem">Notre rayon boissons est conçu pour satisfaire tous les goûts et tous les moments de la journée : le matin avec un bon jus d'orange frais, en journée avec une eau fraîche, ou le soir avec une tisane apaisante.</p>
+        <p style="color:rgba(15,23,42,.55);line-height:1.8">Nous proposons une sélection internationale qui reflète la diversité de notre clientèle : boissons africaines, asiatiques, du Moyen-Orient, d'Europe et d'ailleurs. De quoi voyager sans quitter le 14ème !</p>
+      </div>
+      <div class="reveal reveal-d2">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80" alt="Verres de boissons fraîches colorées" style="width:100%;border-radius:1.5rem;box-shadow:0 20px 56px rgba(2,132,199,.15)" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATÉGORIES BOISSONS -->
+<section class="section" style="background:#fff">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="section-label">Nos catégories</span>
+      <h2 class="section-title">Toutes les boissons<br>dont vous avez besoin</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem">
+
+      <div class="card reveal reveal-d1" style="overflow:hidden">
+        <img src="https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=600&q=80" alt="Jus d'orange pressé frais" class="card-img" loading="lazy"/>
+        <div style="padding:1.5rem">
+          <span class="badge badge-amber" style="margin-bottom:.75rem;display:inline-block">Frais</span>
+          <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:.5rem">Jus de fruits</h3>
+          <p style="font-size:.85rem;color:rgba(15,23,42,.6);line-height:1.6;margin-bottom:.875rem">Jus frais pressés, jus 100% pur jus, jus à base de concentré — oranges, pommes, mangues, fruits exotiques…</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.35rem">
+            <span class="product-chip">Orange</span><span class="product-chip">Pomme</span><span class="product-chip">Mangue</span><span class="product-chip">Ananas</span><span class="product-chip">Multifruits</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d2" style="overflow:hidden">
+        <img src="https://images.unsplash.com/photo-1564419320408-38e16b59b2cd?auto=format&fit=crop&w=600&q=80" alt="Bouteilles d'eau minérale" class="card-img" loading="lazy"/>
+        <div style="padding:1.5rem">
+          <span class="badge badge-sky" style="margin-bottom:.75rem;display:inline-block">Hydratation</span>
+          <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:.5rem">Eaux</h3>
+          <p style="font-size:.85rem;color:rgba(15,23,42,.6);line-height:1.6;margin-bottom:.875rem">Eaux plates et pétillantes de toutes marques — en bouteille individuelle ou en pack économique.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.35rem">
+            <span class="product-chip">Evian</span><span class="product-chip">Cristaline</span><span class="product-chip">Badoit</span><span class="product-chip">San Pellegrino</span><span class="product-chip">Eau de source</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d3" style="overflow:hidden">
+        <img src="https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=600&q=80" alt="Thés et infusions" class="card-img" loading="lazy"/>
+        <div style="padding:1.5rem">
+          <span class="badge badge-green" style="margin-bottom:.75rem;display:inline-block">Bien-être</span>
+          <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:.5rem">Thés &amp; Infusions</h3>
+          <p style="font-size:.85rem;color:rgba(15,23,42,.6);line-height:1.6;margin-bottom:.875rem">Thés verts, noirs, blancs, rooibos, tisanes et infusions — une large sélection pour tous les moments de détente.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.35rem">
+            <span class="product-chip">Thé vert</span><span class="product-chip">Thé à la menthe</span><span class="product-chip">Rooibos</span><span class="product-chip">Infusions</span><span class="product-chip">Camomille</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d4" style="overflow:hidden">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80" alt="Sodas et boissons gazeuses" class="card-img" loading="lazy"/>
+        <div style="padding:1.5rem">
+          <span class="badge" style="background:rgba(124,58,237,.12);color:#7c3aed;margin-bottom:.75rem;display:inline-block">Plaisir</span>
+          <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:.5rem">Sodas &amp; Boissons gazeuses</h3>
+          <p style="font-size:.85rem;color:rgba(15,23,42,.6);line-height:1.6;margin-bottom:.875rem">Les grandes marques et les spécialités du monde — pour petits et grands moments de plaisir.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.35rem">
+            <span class="product-chip">Coca-Cola</span><span class="product-chip">Limonade</span><span class="product-chip">Sodas exotiques</span><span class="product-chip">Fanta</span><span class="product-chip">Sprite</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal" style="overflow:hidden">
+        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=600&q=80" alt="Tasse de café" class="card-img" loading="lazy"/>
+        <div style="padding:1.5rem">
+          <span class="badge" style="background:rgba(120,53,15,.1);color:#92400e;margin-bottom:.75rem;display:inline-block">Chaud</span>
+          <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:.5rem">Cafés &amp; Boissons chaudes</h3>
+          <p style="font-size:.85rem;color:rgba(15,23,42,.6);line-height:1.6;margin-bottom:.875rem">Cafés moulus et en grains, cafés solubles, cacao et boissons maltées — pour commencer la journée du bon pied.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.35rem">
+            <span class="product-chip">Café moulu</span><span class="product-chip">Café soluble</span><span class="product-chip">Cacao</span><span class="product-chip">Milo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d1" style="overflow:hidden">
+        <img src="https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?auto=format&fit=crop&w=600&q=80" alt="Boissons du monde" class="card-img" loading="lazy"/>
+        <div style="padding:1.5rem">
+          <span class="badge" style="background:rgba(190,24,93,.1);color:#be185d;margin-bottom:.75rem;display:inline-block">Monde</span>
+          <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:.5rem">Boissons du monde</h3>
+          <p style="font-size:.85rem;color:rgba(15,23,42,.6);line-height:1.6;margin-bottom:.875rem">Un tour du monde des boissons : bissap, gingembre, bissap fraise, tamarind, lait de coco, lassi et bien d'autres.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.35rem">
+            <span class="product-chip">Bissap</span><span class="product-chip">Gingembre</span><span class="product-chip">Lait de coco</span><span class="product-chip">Tamarind</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm" style="background:linear-gradient(135deg,#0c4a6e,#0284c7)">
+  <div class="container" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem">
+    <div class="reveal"><h2 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.5rem;color:#fff;margin-bottom:.25rem">Un rayon qui se renouvelle !</h2><p style="color:rgba(255,255,255,.75)">De nouvelles références disponibles chaque semaine</p></div>
+    <div style="display:flex;gap:.75rem;flex-wrap:wrap" class="reveal reveal-d2"><a href="contact.html" class="btn btn-white" style="color:#0284c7">Nous trouver</a><a href="nos-rayons.html" class="btn btn-glass">Tous nos rayons</a></div>
+  </div>
+</section>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand"><div class="footer-logo"><div class="footer-logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" d="M12 3C8 3 4 6.5 4 11c0 3 1.5 5.5 4 7.5"/><path stroke-linecap="round" d="M12 3c4 0 8 3.5 8 8 0 3-1.5 5.5-4 7.5"/></svg></div><div><span class="footer-logo-top">Fruit &amp; Légumes</span><span class="footer-logo-bot">de Montsouris</span></div></div><p>Votre épicerie de quartier au cœur du 14ème de Paris.</p></div>
+    <div><div class="footer-heading">Navigation</div><a href="index.html" class="footer-link">Accueil</a><a href="qui-sommes-nous.html" class="footer-link">Notre magasin</a><a href="nos-rayons.html" class="footer-link active">Nos rayons</a><a href="galerie.html"              class="footer-link">Galerie</a><a href="contact.html" class="footer-link">Contact</a></div>
+    <div><div class="footer-heading">Nos rayons</div><a href="fruits-legumes.html" class="footer-link">Fruits &amp; Légumes</a><a href="produits-bio.html" class="footer-link">Produits Bio</a><a href="alimentation-generale.html" class="footer-link">Alimentation Générale</a><a href="boissons.html" class="footer-link active">Boissons</a></div>
+    <div><div class="footer-heading">Informations</div><div class="footer-info-item"><svg class="footer-info-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span>3 rue Liard, 75014 Paris</span></div><div class="footer-info-item"><svg class="footer-info-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 6v6l4 2"/></svg><span>Lun–Dim : 8h00–21h00</span></div></div>
+  </div>
+  <div class="footer-bottom"><span>&copy; <span id="yr"></span> Fruit et Légumes de Montsouris</span><span class="footer-credit">Site par <span>Web Minds Solutions Digitale</span></span></div>
+</footer>
+<style>@media(min-width:768px){.md-grid-2{grid-template-columns:1fr 1fr !important}}</style>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const burger = document.getElementById('burger'), menu = document.getElementById('mobile-menu');
+burger.addEventListener('click', () => { const o = menu.classList.toggle('open'); burger.classList.toggle('open',o); burger.setAttribute('aria-expanded',String(o)); });
+const revEls = document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){ const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);} }),{threshold:.1}); revEls.forEach(el => io.observe(el)); } else { revEls.forEach(el => el.classList.add('visible')); }
+</script>
+</body>
+</html>

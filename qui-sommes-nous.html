@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Découvrez l'histoire et les valeurs de Fruit et Légumes de Montsouris, votre épicerie de quartier au 3 rue Liard, Paris 14ème." />
+  <title>Notre Magasin — Fruit et Légumes de Montsouris</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar" class="solid" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Accueil">
+      <div class="nav-logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" d="M12 3C8 3 4 6.5 4 11c0 3 1.5 5.5 4 7.5"/><path stroke-linecap="round" d="M12 3c4 0 8 3.5 8 8 0 3-1.5 5.5-4 7.5"/></svg></div>
+      <div><span class="nav-logo-text-top">Fruit &amp; Légumes</span><span class="nav-logo-text-bot">de Montsouris</span></div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html"                class="nav-link">Accueil</a></li>
+      <li><a href="qui-sommes-nous.html"      class="nav-link active">Notre magasin</a></li>
+      <li><a href="nos-rayons.html"           class="nav-link">Nos rayons</a></li>
+      <li><a href="galerie.html"              class="nav-link">Galerie</a></li>
+      <li><a href="contact.html"              class="nav-link">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Nous trouver</a>
+    <button class="burger-btn" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"><span class="burger-bar"></span><span class="burger-bar"></span><span class="burger-bar"></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Menu mobile">
+    <div class="mobile-menu-inner">
+      <a href="index.html"           class="mobile-menu-link">Accueil</a>
+      <a href="qui-sommes-nous.html" class="mobile-menu-link active">Notre magasin</a>
+      <a href="nos-rayons.html"      class="mobile-menu-link">Nos rayons</a>
+      <a href="galerie.html"         class="mobile-menu-link">Galerie</a>
+      <a href="contact.html"         class="mobile-menu-link">Contact</a>
+      <a href="contact.html"         class="mobile-menu-cta">Nous trouver</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<header class="page-hero" style="min-height:420px">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1920&q=85')"></div>
+  <div class="page-hero-content">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span aria-current="page">Notre magasin</span>
+    </nav>
+    <div class="page-hero-badge">Notre histoire</div>
+    <h1 class="page-hero-title">Qui sommes-nous ?</h1>
+    <p class="page-hero-sub">Un magasin de quartier, une passion pour les bons produits et un engagement pour la fraîcheur quotidienne.</p>
+  </div>
+</header>
+
+<!-- NOTRE HISTOIRE -->
+<section class="section" style="background:var(--mint)">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr;gap:4rem;align-items:center" class="md-grid-2">
+      <div class="reveal">
+        <span class="section-label">Notre histoire</span>
+        <h2 class="section-title">Une épicerie née<br>de la passion</h2>
+        <p style="color:rgba(15,23,42,.65);line-height:1.8;margin-bottom:1.25rem;font-size:1.02rem">
+          Fruit et Légumes de Montsouris est bien plus qu'une simple épicerie. C'est un lieu de vie, de rencontres et de fraîcheur au cœur du 14ème arrondissement de Paris, à deux pas du magnifique Parc Montsouris.
+        </p>
+        <p style="color:rgba(15,23,42,.55);line-height:1.8;margin-bottom:1.25rem">
+          Chaque matin, nous sélectionnons personnellement les meilleurs fruits et légumes de saison pour garantir une fraîcheur irréprochable à nos clients. Notre démarche est simple : vous apporter le meilleur, chaque jour, à un prix juste.
+        </p>
+        <p style="color:rgba(15,23,42,.55);line-height:1.8">
+          Au fil des années, notre rayon bio s'est développé pour répondre aux attentes croissantes de nos clients soucieux de manger sainement. Nous avons également élargi notre épicerie générale pour vous offrir un lieu unique où trouver tout ce dont vous avez besoin.
+        </p>
+      </div>
+      <div class="reveal reveal-d2" style="position:relative">
+        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=85"
+             alt="Étalage coloré de fruits et légumes frais" style="width:100%;border-radius:1.5rem;box-shadow:0 24px 64px rgba(5,150,105,.18)" loading="lazy" />
+        <div style="position:absolute;bottom:-1.5rem;left:-1.5rem;background:var(--primary);color:#fff;border-radius:1.25rem;padding:1.25rem 1.5rem;box-shadow:0 8px 32px rgba(5,150,105,.35)">
+          <div style="font-family:'Outfit',sans-serif;font-weight:900;font-size:2rem;line-height:1">7j/7</div>
+          <div style="font-size:.8rem;opacity:.85;margin-top:.2rem">Ouvert toute l'année</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOS VALEURS -->
+<section class="section section-dark" style="position:relative;overflow:hidden">
+  <div class="blob" style="width:400px;height:400px;background:#065f46;top:-80px;right:-80px;opacity:.4" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="section-header center reveal">
+      <span class="section-label">Nos valeurs</span>
+      <h2 class="section-title">Ce qui guide<br>chacune de nos actions</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem">
+
+      <div class="glass-dark reveal reveal-d1" style="border-radius:1.5rem;padding:2rem;border:1px solid rgba(255,255,255,.1)">
+        <div style="width:48px;height:48px;background:rgba(16,185,129,.2);border-radius:.875rem;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem">
+          <svg class="w-6 h-6" style="color:#6ee7b7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1M4.22 4.22l.71.71m12.02 12.02.71.71M3 12h1m16 0h1"/><circle cx="12" cy="12" r="4"/></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;color:#fff;margin-bottom:.5rem">Fraîcheur</h3>
+        <p style="color:rgba(255,255,255,.55);font-size:.875rem;line-height:1.7">Réapprovisionnement quotidien depuis le marché. Seuls les produits du jour sont mis en rayon.</p>
+      </div>
+
+      <div class="glass-dark reveal reveal-d2" style="border-radius:1.5rem;padding:2rem;border:1px solid rgba(255,255,255,.1)">
+        <div style="width:48px;height:48px;background:rgba(217,119,6,.15);border-radius:.875rem;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem">
+          <svg class="w-6 h-6" style="color:#fde68a" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;color:#fff;margin-bottom:.5rem">Qualité</h3>
+        <p style="color:rgba(255,255,255,.55);font-size:.875rem;line-height:1.7">Chaque produit est sélectionné à la main. Nous exigeons le meilleur pour vous le proposer.</p>
+      </div>
+
+      <div class="glass-dark reveal reveal-d3" style="border-radius:1.5rem;padding:2rem;border:1px solid rgba(255,255,255,.1)">
+        <div style="width:48px;height:48px;background:rgba(2,132,199,.15);border-radius:.875rem;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem">
+          <svg class="w-6 h-6" style="color:#bae6fd" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0z"/></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;color:#fff;margin-bottom:.5rem">Proximité</h3>
+        <p style="color:rgba(255,255,255,.55);font-size:.875rem;line-height:1.7">Un accueil souriant, des conseils personnalisés et une vraie relation de confiance avec chaque client.</p>
+      </div>
+
+      <div class="glass-dark reveal reveal-d4" style="border-radius:1.5rem;padding:2rem;border:1px solid rgba(255,255,255,.1)">
+        <div style="width:48px;height:48px;background:rgba(16,185,129,.15);border-radius:.875rem;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem">
+          <svg class="w-6 h-6" style="color:#a7f3d0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.355a7.5 7.5 0 0 1-3 0M9 3.75c0 .621.504 1.125 1.125 1.125h3.75c.621 0 1.125-.504 1.125-1.125v-.375A1.125 1.125 0 0 0 13.875 2.25h-3.75A1.125 1.125 0 0 0 9 3.375v.375z"/></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;color:#fff;margin-bottom:.5rem">Engagement bio</h3>
+        <p style="color:rgba(255,255,255,.55);font-size:.875rem;line-height:1.7">Nous développons en permanence notre rayon bio pour répondre aux enjeux de santé et d'environnement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HORAIRES & INFOS -->
+<section class="section" style="background:var(--mint)">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr;gap:3rem;align-items:start" class="md-grid-2">
+
+      <!-- Horaires -->
+      <div class="reveal">
+        <span class="section-label">Horaires d'ouverture</span>
+        <h2 class="section-title" style="font-size:clamp(1.5rem,3vw,2rem)">Nous sommes là<br>pour vous chaque jour</h2>
+        <div style="background:linear-gradient(160deg,#064e3b,#0f172a);border-radius:1.5rem;padding:2rem;margin-top:1.5rem">
+          <div class="hours-row">
+            <span class="hours-day">Lundi</span><span class="hours-time">8h00 – 21h00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Mardi</span><span class="hours-time">8h00 – 21h00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Mercredi</span><span class="hours-time">8h00 – 21h00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Jeudi</span><span class="hours-time">8h00 – 21h00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Vendredi</span><span class="hours-time">8h00 – 21h00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Samedi</span><span class="hours-time">8h00 – 21h00</span>
+          </div>
+          <div class="hours-row" style="border-bottom:none">
+            <span class="hours-day">Dimanche</span><span class="hours-time">8h00 – 21h00</span>
+          </div>
+          <div style="margin-top:1.25rem;display:flex;align-items:center;gap:.625rem">
+            <span class="open-dot"></span>
+            <span style="color:rgba(255,255,255,.7);font-size:.875rem">Ouvert en ce moment</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Infos pratiques -->
+      <div class="reveal reveal-d2">
+        <span class="section-label">Infos pratiques</span>
+        <h2 class="section-title" style="font-size:clamp(1.5rem,3vw,2rem)">Comment nous<br>trouver</h2>
+        <div style="display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem">
+          <div class="feature-box" style="display:flex;align-items:flex-start;gap:1rem;padding:1.25rem 1.5rem">
+            <div style="width:44px;height:44px;background:linear-gradient(135deg,#d1fae5,#6ee7b7);border-radius:.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <svg class="w-5 h-5" style="color:var(--primary)" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <div style="font-family:'Outfit',sans-serif;font-weight:700;margin-bottom:.25rem">Adresse</div>
+              <div style="color:rgba(15,23,42,.6);font-size:.875rem;line-height:1.6">3 rue Liard, 75014 Paris<br>Quartier Montsouris, 14ème arr.</div>
+            </div>
+          </div>
+          <div class="feature-box" style="display:flex;align-items:flex-start;gap:1rem;padding:1.25rem 1.5rem">
+            <div style="width:44px;height:44px;background:linear-gradient(135deg,#dbeafe,#bfdbfe);border-radius:.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <svg class="w-5 h-5" style="color:#0284c7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>
+            </div>
+            <div>
+              <div style="font-family:'Outfit',sans-serif;font-weight:700;margin-bottom:.25rem">Transports</div>
+              <div style="color:rgba(15,23,42,.6);font-size:.875rem;line-height:1.6">RER B — Cité Universitaire<br>Bus 21, 88 — Arrêt Montsouris</div>
+            </div>
+          </div>
+          <div class="feature-box" style="display:flex;align-items:flex-start;gap:1rem;padding:1.25rem 1.5rem">
+            <div style="width:44px;height:44px;background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <svg class="w-5 h-5" style="color:var(--amber)" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z"/></svg>
+            </div>
+            <div>
+              <div style="font-family:'Outfit',sans-serif;font-weight:700;margin-bottom:.25rem">Parking</div>
+              <div style="color:rgba(15,23,42,.6);font-size:.875rem;line-height:1.6">Parking Alésia (5 min à pied)<br>Stationnement rue Liard possible</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem">
+          <a href="contact.html" class="btn btn-primary btn-lg">Voir le plan d'accès complet</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo"><div class="footer-logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" d="M12 3C8 3 4 6.5 4 11c0 3 1.5 5.5 4 7.5"/><path stroke-linecap="round" d="M12 3c4 0 8 3.5 8 8 0 3-1.5 5.5-4 7.5"/></svg></div><div><span class="footer-logo-top">Fruit &amp; Légumes</span><span class="footer-logo-bot">de Montsouris</span></div></div>
+      <p>Votre épicerie de quartier au cœur du 14ème arrondissement de Paris. Fraîcheur, bio et convivialité.</p>
+    </div>
+    <div><div class="footer-heading">Navigation</div><a href="index.html" class="footer-link">Accueil</a><a href="qui-sommes-nous.html" class="footer-link active">Notre magasin</a><a href="nos-rayons.html" class="footer-link">Nos rayons</a><a href="galerie.html"              class="footer-link">Galerie</a><a href="contact.html" class="footer-link">Contact</a></div>
+    <div><div class="footer-heading">Nos rayons</div><a href="fruits-legumes.html" class="footer-link">Fruits &amp; Légumes</a><a href="produits-bio.html" class="footer-link">Produits Bio</a><a href="alimentation-generale.html" class="footer-link">Alimentation Générale</a><a href="boissons.html" class="footer-link">Boissons</a></div>
+    <div><div class="footer-heading">Informations</div><div class="footer-info-item"><svg class="footer-info-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span>3 rue Liard, 75014 Paris</span></div><div class="footer-info-item"><svg class="footer-info-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 6v6l4 2"/></svg><span>Lun–Dim : 8h00–21h00</span></div></div>
+  </div>
+  <div class="footer-bottom"><span>&copy; <span id="yr"></span> Fruit et Légumes de Montsouris</span><span class="footer-credit">Site par <span>Web Minds Solutions Digitale</span></span></div>
+</footer>
+
+<style>@media(min-width:768px){.md-grid-2{grid-template-columns:1fr 1fr !important}}</style>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const burger = document.getElementById('burger'), menu = document.getElementById('mobile-menu');
+burger.addEventListener('click', () => { const o = menu.classList.toggle('open'); burger.classList.toggle('open',o); burger.setAttribute('aria-expanded',String(o)); });
+const revEls = document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){ const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);} }),{threshold:.12}); revEls.forEach(el => io.observe(el)); } else { revEls.forEach(el => el.classList.add('visible')); }
+</script>
+</body>
+</html>

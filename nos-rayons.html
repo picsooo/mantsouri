@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Découvrez tous les rayons de Fruit et Légumes de Montsouris : fruits, légumes, bio, épicerie et boissons." />
+  <title>Nos Rayons — Fruit et Légumes de Montsouris</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+<nav id="navbar" class="solid" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Accueil"><div class="nav-logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" d="M12 3C8 3 4 6.5 4 11c0 3 1.5 5.5 4 7.5"/><path stroke-linecap="round" d="M12 3c4 0 8 3.5 8 8 0 3-1.5 5.5-4 7.5"/></svg></div><div><span class="nav-logo-text-top">Fruit &amp; Légumes</span><span class="nav-logo-text-bot">de Montsouris</span></div></a>
+    <ul class="nav-links" role="list"><li><a href="index.html" class="nav-link">Accueil</a></li><li><a href="qui-sommes-nous.html" class="nav-link">Notre magasin</a></li><li><a href="nos-rayons.html" class="nav-link active">Nos rayons</a></li><li><a href="galerie.html"              class="nav-link">Galerie</a></li><li><a href="contact.html" class="nav-link">Contact</a></li></ul>
+    <a href="contact.html" class="nav-cta"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Nous trouver</a>
+    <button class="burger-btn" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"><span class="burger-bar"></span><span class="burger-bar"></span><span class="burger-bar"></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Menu mobile"><div class="mobile-menu-inner"><a href="index.html" class="mobile-menu-link">Accueil</a><a href="qui-sommes-nous.html" class="mobile-menu-link">Notre magasin</a><a href="nos-rayons.html" class="mobile-menu-link active">Nos rayons</a><a href="galerie.html"         class="mobile-menu-link">Galerie</a><a href="contact.html" class="mobile-menu-link">Contact</a><a href="contact.html" class="mobile-menu-cta">Nous trouver</a></div></div>
+</nav>
+
+<header class="page-hero" style="min-height:380px">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=1920&q=85')"></div>
+  <div class="page-hero-content">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span class="breadcrumb-sep" aria-hidden="true">›</span><span aria-current="page">Nos rayons</span></nav>
+    <div class="page-hero-badge">Nos rayons</div>
+    <h1 class="page-hero-title">Tout ce qu'il vous faut</h1>
+    <p class="page-hero-sub">Des fruits et légumes frais à l'épicerie complète — quatre rayons pour satisfaire tous vos besoins quotidiens.</p>
+  </div>
+</header>
+
+<!-- RAYONS GRID -->
+<section class="section" style="background:var(--mint)">
+  <div class="container">
+    <div style="display:grid;gap:3rem">
+
+      <!-- Fruits & Légumes -->
+      <div style="display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center" class="md-grid-2 reveal">
+        <div style="border-radius:1.5rem;overflow:hidden;box-shadow:0 20px 56px rgba(5,150,105,.15)">
+          <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=900&q=80" alt="Fruits et légumes frais colorés" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" loading="lazy"/>
+        </div>
+        <div>
+          <span class="badge badge-green" style="margin-bottom:1rem;display:inline-block">Frais · Saison</span>
+          <h2 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:.75rem">Fruits &amp; Légumes Frais</h2>
+          <p style="color:rgba(15,23,42,.6);line-height:1.8;margin-bottom:1.25rem">Notre rayon phare ! Chaque matin, nous sélectionnons personnellement les meilleurs fruits et légumes de saison. Tomates, courgettes, pommes, poires, raisins… une gamme complète renouvelée quotidiennement pour vous garantir une fraîcheur irréprochable.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem">
+            <span class="product-chip"><span class="product-chip-dot" style="background:#ef4444"></span>Tomates</span>
+            <span class="product-chip"><span class="product-chip-dot" style="background:#f97316"></span>Oranges</span>
+            <span class="product-chip"><span class="product-chip-dot" style="background:#84cc16"></span>Courgettes</span>
+            <span class="product-chip"><span class="product-chip-dot" style="background:#22c55e"></span>Épinards</span>
+            <span class="product-chip"><span class="product-chip-dot" style="background:#a855f7"></span>Aubergines</span>
+            <span class="product-chip"><span class="product-chip-dot" style="background:#f59e0b"></span>Pommes</span>
+          </div>
+          <a href="fruits-legumes.html" class="btn btn-primary">Voir tous les produits →</a>
+        </div>
+      </div>
+
+      <hr style="border:none;border-top:1px solid rgba(5,150,105,.12)"/>
+
+      <!-- Produits Bio -->
+      <div style="display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center" class="md-grid-2-rev reveal">
+        <div style="order:2" class="md-order-1">
+          <span class="badge badge-emerald" style="margin-bottom:1rem;display:inline-block">Certifié AB</span>
+          <h2 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:.75rem">Produits Bio &amp; Naturels</h2>
+          <p style="color:rgba(15,23,42,.6);line-height:1.8;margin-bottom:1.25rem">Parce que manger sain est une priorité, notre rayon bio s'enrichit chaque jour. Tous nos produits bio sont certifiés Agriculture Biologique — cultivés sans pesticides, sans OGM, dans le respect de la nature et de votre santé.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem">
+            <span class="product-chip"><span class="product-chip-dot" style="background:#059669"></span>Légumes bio</span>
+            <span class="product-chip"><span class="product-chip-dot" style="background:#16a34a"></span>Fruits bio</span>
+            <span class="product-chip"><span class="product-chip-dot" style="background:#65a30d"></span>Herbes aromatiques</span>
+            <span class="product-chip"><span class="product-chip-dot" style="background:#d97706"></span>Compotes bio</span>
+            <span class="product-chip"><span class="product-chip-dot" style="background:#0891b2"></span>Jus bio</span>
+          </div>
+          <a href="produits-bio.html" class="btn btn-primary">Voir le rayon bio →</a>
+        </div>
+        <div style="order:1;border-radius:1.5rem;overflow:hidden;box-shadow:0 20px 56px rgba(5,150,105,.15)" class="md-order-2">
+          <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80" alt="Salade et légumes biologiques frais" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" loading="lazy"/>
+        </div>
+      </div>
+
+      <hr style="border:none;border-top:1px solid rgba(5,150,105,.12)"/>
+
+      <!-- Alimentation Générale -->
+      <div style="display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center" class="md-grid-2 reveal">
+        <div style="border-radius:1.5rem;overflow:hidden;box-shadow:0 20px 56px rgba(217,119,6,.12)">
+          <img src="https://images.unsplash.com/photo-1584473457406-6240486418e9?auto=format&fit=crop&w=900&q=80" alt="Rayons épicerie avec produits alimentaires" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" loading="lazy"/>
+        </div>
+        <div>
+          <span class="badge badge-amber" style="margin-bottom:1rem;display:inline-block">Épicerie</span>
+          <h2 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:.75rem">Alimentation Générale</h2>
+          <p style="color:rgba(15,23,42,.6);line-height:1.8;margin-bottom:1.25rem">Bien plus qu'une épicerie classique ! Pâtes, riz, conserves, légumineuses, épices du monde, huiles, céréales, produits laitiers et bien plus encore. Tout ce dont vous avez besoin pour cuisiner au quotidien, en un seul endroit.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem">
+            <span class="product-chip"><span class="product-chip-dot" style="background:#d97706"></span>Conserves</span>
+            <span class="product-chip"><span class="product-chip-dot" style="background:#f59e0b"></span>Pâtes &amp; Riz</span>
+            <span class="product-chip"><span class="product-chip-dot" style="background:#92400e"></span>Épices</span>
+            <span class="product-chip"><span class="product-chip-dot" style="background:#78350f"></span>Huiles</span>
+            <span class="product-chip"><span class="product-chip-dot" style="background:#b45309"></span>Légumineuses</span>
+            <span class="product-chip"><span class="product-chip-dot" style="background:#a16207"></span>Céréales</span>
+          </div>
+          <a href="alimentation-generale.html" class="btn btn-primary">Voir l'épicerie →</a>
+        </div>
+      </div>
+
+      <hr style="border:none;border-top:1px solid rgba(5,150,105,.12)"/>
+
+      <!-- Boissons -->
+      <div style="display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center" class="md-grid-2-rev reveal">
+        <div style="order:2" class="md-order-1">
+          <span class="badge badge-sky" style="margin-bottom:1rem;display:inline-block">Boissons</span>
+          <h2 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:.75rem">Boissons</h2>
+          <p style="color:rgba(15,23,42,.6);line-height:1.8;margin-bottom:1.25rem">Un rayon boissons complet pour toute la famille : eaux minérales et pétillantes, jus de fruits frais pressés, sodas, thés, infusions, cafés, boissons énergétiques et bien d'autres spécialités du monde entier.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem">
+            <span class="product-chip"><span class="product-chip-dot" style="background:#0284c7"></span>Eaux</span>
+            <span class="product-chip"><span class="product-chip-dot" style="background:#f97316"></span>Jus de fruits</span>
+            <span class="product-chip"><span class="product-chip-dot" style="background:#7c3aed"></span>Sodas</span>
+            <span class="product-chip"><span class="product-chip-dot" style="background:#059669"></span>Thés</span>
+            <span class="product-chip"><span class="product-chip-dot" style="background:#78350f"></span>Cafés</span>
+            <span class="product-chip"><span class="product-chip-dot" style="background:#be185d"></span>Boissons monde</span>
+          </div>
+          <a href="boissons.html" class="btn btn-primary">Voir les boissons →</a>
+        </div>
+        <div style="order:1;border-radius:1.5rem;overflow:hidden;box-shadow:0 20px 56px rgba(2,132,199,.12)" class="md-order-2">
+          <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=80" alt="Bouteilles de jus et boissons variées" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" loading="lazy"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-sm" style="background:var(--primary)">
+  <div class="container" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem">
+    <div class="reveal"><h2 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.6rem;color:#fff;margin-bottom:.25rem">Venez nous découvrir !</h2><p style="color:rgba(255,255,255,.75)">3 rue Liard, 75014 Paris · 8h–21h tous les jours</p></div>
+    <a href="contact.html" class="btn btn-white reveal reveal-d2">Voir le plan d'accès</a>
+  </div>
+</section>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand"><div class="footer-logo"><div class="footer-logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" d="M12 3C8 3 4 6.5 4 11c0 3 1.5 5.5 4 7.5"/><path stroke-linecap="round" d="M12 3c4 0 8 3.5 8 8 0 3-1.5 5.5-4 7.5"/></svg></div><div><span class="footer-logo-top">Fruit &amp; Légumes</span><span class="footer-logo-bot">de Montsouris</span></div></div><p>Votre épicerie de quartier au cœur du 14ème de Paris.</p></div>
+    <div><div class="footer-heading">Navigation</div><a href="index.html" class="footer-link">Accueil</a><a href="qui-sommes-nous.html" class="footer-link">Notre magasin</a><a href="nos-rayons.html" class="footer-link active">Nos rayons</a><a href="galerie.html"              class="footer-link">Galerie</a><a href="contact.html" class="footer-link">Contact</a></div>
+    <div><div class="footer-heading">Nos rayons</div><a href="fruits-legumes.html" class="footer-link">Fruits &amp; Légumes</a><a href="produits-bio.html" class="footer-link">Produits Bio</a><a href="alimentation-generale.html" class="footer-link">Alimentation Générale</a><a href="boissons.html" class="footer-link">Boissons</a></div>
+    <div><div class="footer-heading">Informations</div><div class="footer-info-item"><svg class="footer-info-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span>3 rue Liard, 75014 Paris</span></div><div class="footer-info-item"><svg class="footer-info-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 6v6l4 2"/></svg><span>Lun–Dim : 8h00–21h00</span></div></div>
+  </div>
+  <div class="footer-bottom"><span>&copy; <span id="yr"></span> Fruit et Légumes de Montsouris</span><span class="footer-credit">Site par <span>Web Minds Solutions Digitale</span></span></div>
+</footer>
+
+<style>
+@media(min-width:768px){
+  .md-grid-2{grid-template-columns:1fr 1fr !important}
+  .md-grid-2-rev{grid-template-columns:1fr 1fr !important}
+  .md-order-1{order:1 !important}
+  .md-order-2{order:2 !important}
+}
+</style>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const burger = document.getElementById('burger'), menu = document.getElementById('mobile-menu');
+burger.addEventListener('click', () => { const o = menu.classList.toggle('open'); burger.classList.toggle('open',o); burger.setAttribute('aria-expanded',String(o)); });
+const revEls = document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){ const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);} }),{threshold:.1}); revEls.forEach(el => io.observe(el)); } else { revEls.forEach(el => el.classList.add('visible')); }
+</script>
+</body>
+</html>

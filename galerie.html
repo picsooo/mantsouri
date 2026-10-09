@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Découvrez notre magasin Fruit et Légumes de Montsouris en images — étals de fruits frais, légumes, produits bio, épicerie et boissons au 3 rue Liard, Paris 14ème." />
+  <title>Galerie photos — Fruit et Légumes de Montsouris</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    /* ── Gallery Grid ── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+    @media (min-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: var(--shadow-card);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+    .gallery-item img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    .gallery-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(6,30,18,.7) 0%, transparent 50%);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.25rem;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+    .gallery-item-label {
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: .9rem;
+    }
+
+    /* Featured (large) items */
+    .gallery-item.featured {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    .gallery-item.featured img { aspect-ratio: auto; height: 100%; }
+    @media (max-width: 767px) {
+      .gallery-item.featured { grid-column: span 1; grid-row: span 1; }
+      .gallery-item.featured img { aspect-ratio: 4/3; height: auto; }
+    }
+
+    /* Filter buttons */
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      padding: .55rem 1.15rem;
+      border-radius: 9999px;
+      font-size: .82rem;
+      font-weight: 600;
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(5,150,105,.12);
+      color: var(--dark);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 16px rgba(5,150,105,.25);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,.92);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 1rem;
+      box-shadow: 0 24px 80px rgba(0,0,0,.5);
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.25);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,.3); }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.25);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .lightbox-nav:hover { background: rgba(255,255,255,.3); }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+    .lightbox-caption {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,.8);
+      font-family: 'Outfit', sans-serif;
+      font-size: .95rem;
+      font-weight: 500;
+      text-align: center;
+      background: rgba(0,0,0,.4);
+      padding: .5rem 1.5rem;
+      border-radius: 9999px;
+      backdrop-filter: blur(8px);
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar" class="solid" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Accueil">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="w-5 h-5" aria-hidden="true">
+          <path stroke-linecap="round" d="M12 3C8 3 4 6.5 4 11c0 3 1.5 5.5 4 7.5"/>
+          <path stroke-linecap="round" d="M12 3c4 0 8 3.5 8 8 0 3-1.5 5.5-4 7.5"/>
+          <path stroke-linecap="round" d="M9 11c0-2 1-4 3-5"/>
+          <path stroke-linecap="round" d="M15 11c0-2-1-4-3-5"/>
+        </svg>
+      </div>
+      <div><span class="nav-logo-text-top">Fruit &amp; Légumes</span><span class="nav-logo-text-bot">de Montsouris</span></div>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="index.html"                class="nav-link">Accueil</a></li>
+      <li><a href="qui-sommes-nous.html"      class="nav-link">Notre magasin</a></li>
+      <li><a href="nos-rayons.html"           class="nav-link">Nos rayons</a></li>
+      <li><a href="galerie.html"              class="nav-link active">Galerie</a></li>
+      <li><a href="contact.html"              class="nav-link">Contact</a></li>
+    </ul>
+
+    <a href="contact.html" class="nav-cta">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      Nous trouver
+    </a>
+
+    <button class="burger-btn" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="burger-bar"></span><span class="burger-bar"></span><span class="burger-bar"></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Menu mobile">
+    <div class="mobile-menu-inner">
+      <a href="index.html"           class="mobile-menu-link">Accueil</a>
+      <a href="qui-sommes-nous.html" class="mobile-menu-link">Notre magasin</a>
+      <a href="nos-rayons.html"      class="mobile-menu-link">Nos rayons</a>
+      <a href="galerie.html"         class="mobile-menu-link active">Galerie</a>
+      <a href="contact.html"         class="mobile-menu-link">Contact</a>
+      <a href="contact.html"         class="mobile-menu-cta">Nous trouver</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('assets/img/magasin/vue-ensemble-fruits.jpg')"></div>
+  <div class="page-hero-content">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a>
+      <span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <span>Galerie</span>
+    </nav>
+    <span class="page-hero-badge">Visite virtuelle</span>
+    <h1 class="page-hero-title">Notre magasin<br>en images</h1>
+    <p class="page-hero-sub">Découvrez notre épicerie au 3 rue Liard — nos étals colorés, nos produits frais et notre ambiance de quartier.</p>
+  </div>
+</section>
+
+<!-- BANDEAU -->
+<div style="background:#059669" class="py-3 px-6">
+  <div class="container" style="max-width:1280px;margin:0 auto;text-align:center">
+    <span style="font-size:.85rem;font-weight:600;color:#fff">21 photos de notre magasin — Fruits, Légumes, Bio, Épicerie &amp; Boissons</span>
+  </div>
+</div>
+
+<!-- FILTER + GALLERY -->
+<section class="section" style="background:var(--mint)">
+  <div class="container">
+
+    <!-- Filtres -->
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem;justify-content:center" class="reveal">
+      <button class="filter-btn active" data-filter="all">Tout voir</button>
+      <button class="filter-btn" data-filter="fruits">Fruits</button>
+      <button class="filter-btn" data-filter="legumes">Légumes</button>
+      <button class="filter-btn" data-filter="bio">Bio</button>
+      <button class="filter-btn" data-filter="epicerie">Épicerie</button>
+      <button class="filter-btn" data-filter="boissons">Boissons</button>
+      <button class="filter-btn" data-filter="magasin">Vue d'ensemble</button>
+    </div>
+
+    <!-- Grille photos -->
+    <div class="gallery-grid" id="gallery">
+
+      <!-- VUE D'ENSEMBLE — FEATURED -->
+      <div class="gallery-item featured reveal" data-cat="magasin" data-caption="Vue d'ensemble du magasin — Allée fruits et boissons">
+        <img src="assets/img/magasin/vue-allee-complete.jpg" alt="Vue d'ensemble du magasin avec allée de fruits et réfrigérateurs" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Vue d'ensemble du magasin</span></div>
+      </div>
+
+      <!-- FRUITS -->
+      <div class="gallery-item reveal" data-cat="fruits" data-caption="Nectarines, kiwis bio, abricots et melons">
+        <img src="assets/img/magasin/fruits-bio-nectarines.jpg" alt="Étal de nectarines bio, kiwis et fruits de saison" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Nectarines &amp; fruits bio</span></div>
+      </div>
+
+      <div class="gallery-item reveal" data-cat="fruits" data-caption="Melons, prunes et citrons verts">
+        <img src="assets/img/magasin/fruits-melons-prunes.jpg" alt="Étal de melons, prunes et citrons verts frais" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Melons &amp; prunes</span></div>
+      </div>
+
+      <div class="gallery-item reveal" data-cat="fruits" data-caption="Fraises et cerises fraîches">
+        <img src="assets/img/magasin/fraises-cerises.jpg" alt="Barquettes de fraises et cerises fraîches" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Fraises &amp; cerises</span></div>
+      </div>
+
+      <div class="gallery-item reveal" data-cat="fruits" data-caption="Pêches, raisins et noix de coco">
+        <img src="assets/img/magasin/fruits-peches-raisins.jpg" alt="Pêches, raisins et noix de coco sur l'étal" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Pêches &amp; raisins</span></div>
+      </div>
+
+      <div class="gallery-item reveal" data-cat="fruits" data-caption="Pastèques, melons et fruits d'été">
+        <img src="assets/img/magasin/fruits-pasteque-melons.jpg" alt="Pastèques coupées, melons et fruits d'été" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Pastèques &amp; melons</span></div>
+      </div>
+
+      <div class="gallery-item reveal" data-cat="fruits" data-caption="Abricots, prunes et fraises">
+        <img src="assets/img/magasin/fruits-abricots-cerises.jpg" alt="Étal d'abricots, prunes et fraises" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Abricots &amp; fruits rouges</span></div>
+      </div>
+
+      <div class="gallery-item reveal" data-cat="fruits" data-caption="Oranges, citrons et melons jaunes">
+        <img src="assets/img/magasin/oranges-melons.jpg" alt="Oranges, citrons et melons sur l'étal" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Agrumes &amp; melons</span></div>
+      </div>
+
+      <div class="gallery-item reveal" data-cat="fruits" data-caption="Bananes, tomates et poivrons colorés">
+        <img src="assets/img/magasin/fruits-bananes-poivrons.jpg" alt="Bananes, tomates et poivrons multicolores" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Bananes &amp; poivrons</span></div>
+      </div>
+
+      <!-- LÉGUMES -->
+      <div class="gallery-item reveal" data-cat="legumes" data-caption="Tomates, concombres, poivrons et salades">
+        <img src="assets/img/magasin/legumes-tomates-concombres.jpg" alt="Étal de tomates, concombres et poivrons frais" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Tomates &amp; concombres</span></div>
+      </div>
+
+      <div class="gallery-item reveal" data-cat="legumes" data-caption="Poivrons rouges, tomates et ail">
+        <img src="assets/img/magasin/legumes-poivrons-tomates.jpg" alt="Poivrons, tomates et ail sur l'étal" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Poivrons &amp; tomates</span></div>
+      </div>
+
+      <div class="gallery-item reveal" data-cat="legumes" data-caption="Pommes de terre, tomates anciennes et gingembre">
+        <img src="assets/img/magasin/legumes-patates-tomates.jpg" alt="Pommes de terre, tomates anciennes et gingembre" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Pommes de terre &amp; tomates</span></div>
+      </div>
+
+      <div class="gallery-item reveal" data-cat="legumes" data-caption="Carottes, aubergines, brocolis et poireaux">
+        <img src="assets/img/magasin/legumes-carottes-aubergines.jpg" alt="Carottes, aubergines, brocolis et poireaux frais" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Carottes &amp; légumes verts</span></div>
+      </div>
+
+      <!-- BIO -->
+      <div class="gallery-item reveal" data-cat="bio" data-caption="Tomates bio, salades et fruits de saison">
+        <img src="assets/img/magasin/legumes-bio-tomates.jpg" alt="Étal bio avec tomates anciennes et salades" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Rayon bio</span></div>
+      </div>
+
+      <div class="gallery-item reveal" data-cat="bio" data-caption="Oignons, pommes de terre et produits bio certifiés AB">
+        <img src="assets/img/magasin/epicerie-bio-oignons.jpg" alt="Oignons, pommes de terre et produits certifiés AB" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Produits bio certifiés</span></div>
+      </div>
+
+      <!-- ÉPICERIE -->
+      <div class="gallery-item reveal" data-cat="epicerie" data-caption="Biscuits, snacks et produits secs">
+        <img src="assets/img/magasin/epicerie-snacks-biscuits.jpg" alt="Rayons de biscuits, snacks et produits secs" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Snacks &amp; biscuits</span></div>
+      </div>
+
+      <div class="gallery-item reveal" data-cat="epicerie" data-caption="Conserves, pâtes, huiles et épices">
+        <img src="assets/img/magasin/epicerie-conserves-pates.jpg" alt="Rayons de conserves, pâtes et épices" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Conserves &amp; pâtes</span></div>
+      </div>
+
+      <!-- BOISSONS -->
+      <div class="gallery-item reveal" data-cat="boissons" data-caption="Réfrigérateurs — jus, sodas, produits laitiers">
+        <img src="assets/img/magasin/frigo-boissons.jpg" alt="Réfrigérateurs avec boissons, jus et produits laitiers" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Boissons fraîches</span></div>
+      </div>
+
+      <!-- VUE D'ENSEMBLE -->
+      <div class="gallery-item reveal" data-cat="magasin" data-caption="Vue d'ensemble — Étal de légumes frais">
+        <img src="assets/img/magasin/vue-ensemble-legumes.jpg" alt="Vue d'ensemble de l'étal de légumes" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">L'étal de légumes</span></div>
+      </div>
+
+      <div class="gallery-item reveal" data-cat="magasin" data-caption="Vue d'ensemble — Grand étal de fruits">
+        <img src="assets/img/magasin/vue-ensemble-fruits.jpg" alt="Vue d'ensemble du grand étal de fruits" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">L'étal de fruits</span></div>
+      </div>
+
+      <div class="gallery-item reveal" data-cat="magasin" data-caption="Entrée du magasin — 3 rue Liard">
+        <img src="assets/img/magasin/entree-magasin.jpg" alt="Entrée du magasin au 3 rue Liard avec fruits en vitrine" loading="lazy" />
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Entrée du magasin</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-sm" style="background:var(--primary)">
+  <div class="container" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem">
+    <div class="reveal">
+      <h2 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.6rem;color:#fff;margin-bottom:.35rem">Venez voir par vous-même !</h2>
+      <p style="color:rgba(255,255,255,.75);font-size:.95rem">3 rue Liard, 75014 Paris &middot; Ouvert tous les jours 8h&ndash;21h</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:1rem" class="reveal reveal-d2">
+      <a href="contact.html" class="btn btn-white">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        Voir le plan d'accès
+      </a>
+      <a href="https://maps.google.com/?q=3+rue+Liard+75014+Paris" target="_blank" rel="noopener" class="btn btn-glass">Itinéraire Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="footer-logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" d="M12 3C8 3 4 6.5 4 11c0 3 1.5 5.5 4 7.5"/><path stroke-linecap="round" d="M12 3c4 0 8 3.5 8 8 0 3-1.5 5.5-4 7.5"/></svg></div>
+        <div><span class="footer-logo-top">Fruit &amp; Légumes</span><span class="footer-logo-bot">de Montsouris</span></div>
+      </div>
+      <p>Votre épicerie de quartier au cœur du 14ème arrondissement de Paris. Fraîcheur, bio et convivialité depuis toujours.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Navigation</div>
+      <a href="index.html"                class="footer-link">Accueil</a>
+      <a href="qui-sommes-nous.html"      class="footer-link">Notre magasin</a>
+      <a href="nos-rayons.html"           class="footer-link">Nos rayons</a>
+      <a href="galerie.html"              class="footer-link active">Galerie</a>
+      <a href="contact.html"              class="footer-link">Contact</a>
+    </div>
+    <div>
+      <div class="footer-heading">Nos rayons</div>
+      <a href="fruits-legumes.html"        class="footer-link">Fruits &amp; Légumes</a>
+      <a href="produits-bio.html"          class="footer-link">Produits Bio</a>
+      <a href="alimentation-generale.html" class="footer-link">Alimentation Générale</a>
+      <a href="boissons.html"              class="footer-link">Boissons</a>
+    </div>
+    <div>
+      <div class="footer-heading">Informations</div>
+      <div class="footer-info-item">
+        <svg class="footer-info-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <span>3 rue Liard<br>75014 Paris</span>
+      </div>
+      <div class="footer-info-item">
+        <svg class="footer-info-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 6v6l4 2"/></svg>
+        <span>Lun&ndash;Dim : 8h00&ndash;21h00</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; <span id="yr"></span> Fruit et Légumes de Montsouris &middot; Tous droits réservés</span>
+    <span class="footer-credit">Site par <span>Web Minds Solutions Digitale</span></span>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lb-close" aria-label="Fermer">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
+  </button>
+  <button class="lightbox-nav lightbox-prev" id="lb-prev" aria-label="Photo précédente">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m15 18-6-6 6-6"/></svg>
+  </button>
+  <button class="lightbox-nav lightbox-next" id="lb-next" aria-label="Photo suivante">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
+  </button>
+  <img id="lb-img" src="" alt="" />
+  <div class="lightbox-caption" id="lb-caption"></div>
+</div>
+
+<script>
+// Year
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Navbar scroll
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 80);
+}, {passive:true});
+
+// Burger
+const burger = document.getElementById('burger');
+const menu   = document.getElementById('mobile-menu');
+burger.addEventListener('click', () => {
+  const open = menu.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', String(open));
+});
+
+// Filter
+const filterBtns = document.querySelectorAll('.filter-btn');
+const items = document.querySelectorAll('.gallery-item');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.filter;
+    items.forEach(item => {
+      if (cat === 'all' || item.dataset.cat === cat) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+});
+
+// Lightbox
+const lightbox = document.getElementById('lightbox');
+const lbImg    = document.getElementById('lb-img');
+const lbCap    = document.getElementById('lb-caption');
+let lbItems = [], lbIdx = 0;
+
+function updateLbItems() {
+  lbItems = [...document.querySelectorAll('.gallery-item:not([style*="display: none"])')];
+}
+
+function openLb(idx) {
+  updateLbItems();
+  lbIdx = idx;
+  const item = lbItems[lbIdx];
+  lbImg.src = item.querySelector('img').src;
+  lbImg.alt = item.querySelector('img').alt;
+  lbCap.textContent = item.dataset.caption;
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLb() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function navLb(dir) {
+  lbIdx = (lbIdx + dir + lbItems.length) % lbItems.length;
+  const item = lbItems[lbIdx];
+  lbImg.src = item.querySelector('img').src;
+  lbImg.alt = item.querySelector('img').alt;
+  lbCap.textContent = item.dataset.caption;
+}
+
+items.forEach(item => {
+  item.addEventListener('click', () => {
+    updateLbItems();
+    const idx = lbItems.indexOf(item);
+    if (idx !== -1) openLb(idx);
+  });
+});
+
+document.getElementById('lb-close').addEventListener('click', closeLb);
+document.getElementById('lb-prev').addEventListener('click', () => navLb(-1));
+document.getElementById('lb-next').addEventListener('click', () => navLb(1));
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLb(); });
+
+document.addEventListener('keydown', e => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLb();
+  if (e.key === 'ArrowLeft') navLb(-1);
+  if (e.key === 'ArrowRight') navLb(1);
+});
+
+// Scroll reveal
+const revEls = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  revEls.forEach(el => io.observe(el));
+} else {
+  revEls.forEach(el => el.classList.add('visible'));
+}
+</script>
+</body>
+</html>
